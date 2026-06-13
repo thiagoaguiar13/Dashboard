@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-13T14:38:43.811299",
+  "gerado_em": "2026-06-13T15:05:49.970353",
   "obras": {
     "vila-gonzaga": {
       "nome": "Vila Gonzaga",
@@ -268,7 +268,7 @@
         "modulo2": {
           "numero_medicao": 5,
           "periodo_referencia": "05/05/2026 a 05/06/2026",
-          "avanco_fisico_mes_pct": 0.6256799999999991,
+          "avanco_fisico_mes_pct": 0.006256799999999991,
           "avanco_fisico_acumulado_pct": 0.1357378,
           "avanco_fisico_anterior_pct": 0.129481,
           "medicao_mes_rs": 164338.60683081578,
@@ -308,7 +308,7 @@
             "modulo": 2,
             "numero_medicao": 5,
             "periodo_fim": "2026-06-05",
-            "pct_periodo": 0.6256799999999991,
+            "pct_periodo": 0.006256799999999991,
             "rs_periodo": 164338.60683081578,
             "pct_acum": 0.1357378,
             "rs_acum": 3565234.7759685363
