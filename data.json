@@ -1,0 +1,335 @@
+{
+  "gerado_em": "2026-06-13T13:29:10.775740",
+  "obras": {
+    "vila-gonzaga": {
+      "nome": "Vila Gonzaga",
+      "localizacao": "R. Nove - Luiz Gonzaga, Caruaru - PE, 55024-660",
+      "custo": {
+        "ie_atual_total": 0.9985352218732387,
+        "ie_projetado_total": 0.9997195084639032,
+        "discrepancia_acumulada_total": -13411.754774760455,
+        "custo_projetado_uh": 93362.83896397318,
+        "custo_incorrido": 7031899.45,
+        "custo_a_incorrer": 40769874.09955424,
+        "orcamento_projetado_total": 47801773.549554266,
+        "categorias": [
+          {
+            "nome": "INDIRETOS",
+            "ie_atual": 1.2329549285370898,
+            "discrepancia_acumulada": 188275.82405781045,
+            "ie_projetado": 1.0416637886906783,
+            "orcamento_projetado": 4707207.730505714
+          },
+          {
+            "nome": "HABITAÇÃO",
+            "ie_atual": 1.0616532552831606,
+            "discrepancia_acumulada": 269893.4619290773,
+            "ie_projetado": 1.009676471231906,
+            "orcamento_projetado": 28161617.155496277
+          },
+          {
+            "nome": "INFRAESTRUTURA / EQUIPAMENTOS",
+            "ie_atual": 0.7518129416634906,
+            "discrepancia_acumulada": -825595.5637932944,
+            "ie_projetado": 0.9116119868090794,
+            "orcamento_projetado": 8514987.327350432
+          },
+          {
+            "nome": "DIRETOS - FOLHA",
+            "ie_atual": 1.6094929566544862,
+            "discrepancia_acumulada": 255755.83744231056,
+            "ie_projetado": 1.0614491596594466,
+            "orcamento_projetado": 4417828.009945844
+          },
+          {
+            "nome": "ADMINISTRAÇÃO LOCAL DA OBRA",
+            "ie_atual": 1.43820043778798,
+            "discrepancia_acumulada": 98258.68558933336,
+            "ie_projetado": 1.0516641231174366,
+            "orcamento_projetado": 2000133.326256
+          }
+        ]
+      },
+      "fluxo": {
+        "despesa_mes_atual_rs": 1558764.75,
+        "despesa_acumulada_rs": 11292342.801784385,
+        "previsto_proximo_mes_rs": 2063650.6421023854,
+        "total_projetado_rs": 47275273.841402926,
+        "meses": [
+          {
+            "data": "2026-03-01",
+            "valor_rs": 11292342.801784385,
+            "realizado": true
+          },
+          {
+            "data": "2026-04-01",
+            "valor_rs": 1469358.8027081261,
+            "realizado": true
+          },
+          {
+            "data": "2026-05-01",
+            "valor_rs": 1832631.927484884,
+            "realizado": true
+          },
+          {
+            "data": "2026-06-01",
+            "valor_rs": 2004338.2433419463,
+            "realizado": true
+          },
+          {
+            "data": "2026-07-01",
+            "valor_rs": 2063650.6421023854,
+            "realizado": false
+          },
+          {
+            "data": "2026-08-01",
+            "valor_rs": 2336150.8432451896,
+            "realizado": false
+          },
+          {
+            "data": "2026-09-01",
+            "valor_rs": 2710975.3083798084,
+            "realizado": false
+          },
+          {
+            "data": "2026-10-01",
+            "valor_rs": 2299138.7740835184,
+            "realizado": false
+          },
+          {
+            "data": "2026-11-01",
+            "valor_rs": 2011825.9566223877,
+            "realizado": false
+          },
+          {
+            "data": "2026-12-01",
+            "valor_rs": 1358330.9058035954,
+            "realizado": false
+          },
+          {
+            "data": "2027-01-01",
+            "valor_rs": 1590110.8781095776,
+            "realizado": false
+          },
+          {
+            "data": "2027-02-01",
+            "valor_rs": 1450818.3452943307,
+            "realizado": false
+          },
+          {
+            "data": "2027-03-01",
+            "valor_rs": 2116999.245511991,
+            "realizado": false
+          },
+          {
+            "data": "2027-04-01",
+            "valor_rs": 1842443.569262289,
+            "realizado": false
+          },
+          {
+            "data": "2027-05-01",
+            "valor_rs": 2132090.7206725976,
+            "realizado": false
+          },
+          {
+            "data": "2027-06-01",
+            "valor_rs": 1753077.2052965984,
+            "realizado": false
+          },
+          {
+            "data": "2027-07-01",
+            "valor_rs": 1902022.5432881939,
+            "realizado": false
+          },
+          {
+            "data": "2027-08-01",
+            "valor_rs": 1272271.0713768909,
+            "realizado": false
+          },
+          {
+            "data": "2027-09-01",
+            "valor_rs": 1224018.7314873883,
+            "realizado": false
+          },
+          {
+            "data": "2027-10-01",
+            "valor_rs": 850486.9055656708,
+            "realizado": false
+          },
+          {
+            "data": "2027-11-01",
+            "valor_rs": 720713.4241294409,
+            "realizado": false
+          },
+          {
+            "data": "2027-12-01",
+            "valor_rs": 602378.2211011325,
+            "realizado": false
+          },
+          {
+            "data": "2028-01-01",
+            "valor_rs": 505569.15348947275,
+            "realizado": false
+          },
+          {
+            "data": "2028-02-01",
+            "valor_rs": -33235.189369439475,
+            "realizado": false
+          },
+          {
+            "data": "2028-03-01",
+            "valor_rs": -33235.189369439475,
+            "realizado": false
+          }
+        ]
+      },
+      "prazo": {
+        "status_dias": -15,
+        "prazo_projetado": "Jan/2028 (previsto)",
+        "avanco": {
+          "global_plan_acum": 0.1586,
+          "global_exec_acum": 0.146,
+          "global_plan_mes": 0.0449,
+          "global_exec_mes": 0.038,
+          "habitacao_plan_acum": 0.0,
+          "habitacao_exec_acum": 0.0,
+          "infraestrutura_plan_acum": 0.0,
+          "infraestrutura_exec_acum": 0.0,
+          "equipamentos_plan_acum": 0.0,
+          "equipamentos_exec_acum": 0.0
+        },
+        "top5_mes_vigente": [
+          {
+            "nome": "Rebaixo",
+            "contribuicao_pct": 2.1999999999999997,
+            "avanco_servico_pct": 0.022
+          },
+          {
+            "nome": "Terraplanagem",
+            "contribuicao_pct": 88.0,
+            "avanco_servico_pct": 0.88
+          },
+          {
+            "nome": "Infra Elétrica",
+            "contribuicao_pct": 0.0,
+            "avanco_servico_pct": 0.0
+          },
+          {
+            "nome": "Infra Esgoto",
+            "contribuicao_pct": 0.0,
+            "avanco_servico_pct": 0.0
+          },
+          {
+            "nome": "Castelo – Montagem",
+            "contribuicao_pct": 27.500000000000004,
+            "avanco_servico_pct": 0.275
+          },
+          {
+            "nome": "EST – Estrutura",
+            "contribuicao_pct": 7.000000000000001,
+            "avanco_servico_pct": 0.07
+          },
+          {
+            "nome": "EST – Estuque",
+            "contribuicao_pct": 6.3,
+            "avanco_servico_pct": 0.063
+          },
+          {
+            "nome": "Contenção Int./Ext.",
+            "contribuicao_pct": 1.2,
+            "avanco_servico_pct": 0.012
+          },
+          {
+            "nome": "Infra Águas Pluviais",
+            "contribuicao_pct": 5.1,
+            "avanco_servico_pct": 0.051
+          },
+          {
+            "nome": "Baldrame",
+            "contribuicao_pct": 100.0,
+            "avanco_servico_pct": 1.0
+          }
+        ],
+        "top5_proximo_mes": [],
+        "planejado_proximo_mes_pct": 0.038900000000000004,
+        "projetado_proximo_mes_pct": 0.0
+      },
+      "pls": {
+        "modulo1": {
+          "numero_medicao": 8,
+          "periodo_referencia": "05/04/2026 à 05/05/2026",
+          "avanco_fisico_mes_pct": 0.041105717499999986,
+          "avanco_fisico_acumulado_pct": 0.1884057175,
+          "avanco_fisico_anterior_pct": 0.14730000000000001,
+          "medicao_mes_rs": 1319592.1854719995,
+          "acumulado_recebido_rs": 6048275.705471999,
+          "contrato_total_rs": 32102399.999999996
+        },
+        "modulo2": {
+          "numero_medicao": 3,
+          "periodo_referencia": "05/04/2026 a 05/05/2026",
+          "avanco_fisico_mes_pct": 0.041712000000000006,
+          "avanco_fisico_acumulado_pct": 0.129481,
+          "avanco_fisico_anterior_pct": 0.087769,
+          "medicao_mes_rs": 1095590.71220544,
+          "acumulado_recebido_rs": 3400896.16913772,
+          "contrato_total_rs": 26265600.12
+        },
+        "previsao_curva": [],
+        "historico_medicoes": [
+          {
+            "modulo": 1,
+            "numero_medicao": 8,
+            "periodo_fim": "2026-05-05",
+            "pct_periodo": 0.041105717499999986,
+            "rs_periodo": 1319592.1854719995,
+            "pct_acum": 0.1884057175,
+            "rs_acum": 6048275.705471999
+          },
+          {
+            "modulo": 1,
+            "numero_medicao": 8,
+            "periodo_fim": "2026-05-05",
+            "pct_periodo": 0.041105717499999986,
+            "rs_periodo": 1319592.1854719995,
+            "pct_acum": 0.1884057175,
+            "rs_acum": 6048275.705471999
+          },
+          {
+            "modulo": 2,
+            "numero_medicao": 3,
+            "periodo_fim": "2026-05-05",
+            "pct_periodo": 0.041712000000000006,
+            "rs_periodo": 1095590.71220544,
+            "pct_acum": 0.129481,
+            "rs_acum": 3400896.16913772
+          },
+          {
+            "modulo": 2,
+            "numero_medicao": 4,
+            "periodo_fim": "2026-05-05",
+            "pct_periodo": 0.041712000000000006,
+            "rs_periodo": 1095590.7122054403,
+            "pct_acum": 0.129481,
+            "rs_acum": 3400896.1691377205
+          }
+        ]
+      }
+    }
+  },
+  "comparativo": {
+    "obras": [
+      {
+        "slug": "vila-gonzaga",
+        "nome": "Vila Gonzaga",
+        "ie_atual": 0.9985352218732387,
+        "ie_projetado": 0.9997195084639032,
+        "status_dias": -15,
+        "avanco_global_pct": 0.146,
+        "prazo_projetado": "Jan/2028 (previsto)",
+        "pls_avanco_mod1": 0.1884057175,
+        "pls_avanco_mod2": 0.129481
+      }
+    ]
+  }
+}
