@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-13T13:29:10.775740",
+  "gerado_em": "2026-06-13T14:13:43.163479",
   "obras": {
     "vila-gonzaga": {
       "nome": "Vila Gonzaga",
@@ -256,23 +256,23 @@
       },
       "pls": {
         "modulo1": {
-          "numero_medicao": 8,
-          "periodo_referencia": "05/04/2026 à 05/05/2026",
-          "avanco_fisico_mes_pct": 0.041105717499999986,
-          "avanco_fisico_acumulado_pct": 0.1884057175,
-          "avanco_fisico_anterior_pct": 0.14730000000000001,
-          "medicao_mes_rs": 1319592.1854719995,
-          "acumulado_recebido_rs": 6048275.705471999,
+          "numero_medicao": 9,
+          "periodo_referencia": "05/05/2026 à 05/06/2026",
+          "avanco_fisico_mes_pct": 0.05479465921875004,
+          "avanco_fisico_acumulado_pct": 0.24320037671875003,
+          "avanco_fisico_anterior_pct": 0.1884057175,
+          "medicao_mes_rs": 1759040.068104001,
+          "acumulado_recebido_rs": 7807315.773575999,
           "contrato_total_rs": 32102399.999999996
         },
         "modulo2": {
-          "numero_medicao": 3,
-          "periodo_referencia": "05/04/2026 a 05/05/2026",
-          "avanco_fisico_mes_pct": 0.041712000000000006,
-          "avanco_fisico_acumulado_pct": 0.129481,
-          "avanco_fisico_anterior_pct": 0.087769,
-          "medicao_mes_rs": 1095590.71220544,
-          "acumulado_recebido_rs": 3400896.16913772,
+          "numero_medicao": 5,
+          "periodo_referencia": "05/05/2026 a 05/06/2026",
+          "avanco_fisico_mes_pct": 0.6256799999999991,
+          "avanco_fisico_acumulado_pct": 0.1357378,
+          "avanco_fisico_anterior_pct": 0.129481,
+          "medicao_mes_rs": 164338.60683081578,
+          "acumulado_recebido_rs": 3565234.7759685363,
           "contrato_total_rs": 26265600.12
         },
         "previsao_curva": [],
@@ -312,6 +312,24 @@
             "rs_periodo": 1095590.7122054403,
             "pct_acum": 0.129481,
             "rs_acum": 3400896.1691377205
+          },
+          {
+            "modulo": 1,
+            "numero_medicao": 9,
+            "periodo_fim": "2026-06-05",
+            "pct_periodo": 0.05479465921875004,
+            "rs_periodo": 1759040.068104001,
+            "pct_acum": 0.24320037671875003,
+            "rs_acum": 7807315.773575999
+          },
+          {
+            "modulo": 2,
+            "numero_medicao": 5,
+            "periodo_fim": "2026-06-05",
+            "pct_periodo": 0.6256799999999991,
+            "rs_periodo": 164338.60683081578,
+            "pct_acum": 0.1357378,
+            "rs_acum": 3565234.7759685363
           }
         ]
       }
@@ -327,8 +345,8 @@
         "status_dias": -15,
         "avanco_global_pct": 0.146,
         "prazo_projetado": "Jan/2028 (previsto)",
-        "pls_avanco_mod1": 0.1884057175,
-        "pls_avanco_mod2": 0.129481
+        "pls_avanco_mod1": 0.24320037671875003,
+        "pls_avanco_mod2": 0.1357378
       }
     ]
   }
