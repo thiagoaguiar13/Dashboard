@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-13T14:37:01.770093",
+  "gerado_em": "2026-06-13T14:38:43.811299",
   "obras": {
     "vila-gonzaga": {
       "nome": "Vila Gonzaga",
@@ -285,24 +285,6 @@
             "rs_periodo": 1319592.1854719995,
             "pct_acum": 0.1884057175,
             "rs_acum": 6048275.705471999
-          },
-          {
-            "modulo": 1,
-            "numero_medicao": 8,
-            "periodo_fim": "2026-05-05",
-            "pct_periodo": 0.041105717499999986,
-            "rs_periodo": 1319592.1854719995,
-            "pct_acum": 0.1884057175,
-            "rs_acum": 6048275.705471999
-          },
-          {
-            "modulo": 2,
-            "numero_medicao": 3,
-            "periodo_fim": "2026-05-05",
-            "pct_periodo": 0.041712000000000006,
-            "rs_periodo": 1095590.71220544,
-            "pct_acum": 0.129481,
-            "rs_acum": 3400896.16913772
           },
           {
             "modulo": 2,
