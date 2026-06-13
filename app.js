@@ -528,7 +528,7 @@ async function init() {
   const main = document.getElementById('conteudo');
   main.innerHTML = '<p class="loading">Carregando dados...</p>';
   try {
-    const resp = await fetch('data.json');
+    const resp = await fetch('data.json?t=' + Date.now(), { cache: 'no-store' });
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     DADOS = await resp.json();
   } catch (e) {
