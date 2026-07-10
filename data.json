@@ -1,184 +1,184 @@
 {
-  "gerado_em": "2026-06-13T15:05:49.970353",
+  "gerado_em": "2026-07-10T19:08:03.736898",
   "obras": {
     "vila-gonzaga": {
       "nome": "Vila Gonzaga",
       "localizacao": "R. Nove - Luiz Gonzaga, Caruaru - PE, 55024-660",
       "custo": {
-        "ie_atual_total": 0.9985352218732387,
-        "ie_projetado_total": 0.9997195084639032,
-        "discrepancia_acumulada_total": -13411.754774760455,
-        "custo_projetado_uh": 93362.83896397318,
-        "custo_incorrido": 7031899.45,
-        "custo_a_incorrer": 40769874.09955424,
-        "orcamento_projetado_total": 47801773.549554266,
+        "ie_atual_total": 1.0079953333990914,
+        "ie_projetado_total": 1.001790702067822,
+        "discrepancia_acumulada_total": 85908.33939776383,
+        "custo_projetado_uh": 93556.26573345075,
+        "custo_incorrido": 9562670.019999994,
+        "custo_a_incorrer": 38338138.03552678,
+        "orcamento_projetado_total": 47900808.055526786,
         "categorias": [
           {
             "nome": "INDIRETOS",
-            "ie_atual": 1.2329549285370898,
-            "discrepancia_acumulada": 188275.82405781045,
-            "ie_projetado": 1.0416637886906783,
-            "orcamento_projetado": 4707207.730505714
+            "ie_atual": 1.2090314069914645,
+            "discrepancia_acumulada": 215031.9061085069,
+            "ie_projetado": 1.0475214768344023,
+            "orcamento_projetado": 4733678.22435641
           },
           {
             "nome": "HABITAÇÃO",
-            "ie_atual": 1.0616532552831606,
-            "discrepancia_acumulada": 269893.4619290773,
-            "ie_projetado": 1.009676471231906,
-            "orcamento_projetado": 28161617.155496277
+            "ie_atual": 1.0730738924506174,
+            "discrepancia_acumulada": 366491.20446815214,
+            "ie_projetado": 1.0131397832738707,
+            "orcamento_projetado": 28258214.898035355
           },
           {
             "nome": "INFRAESTRUTURA / EQUIPAMENTOS",
-            "ie_atual": 0.7518129416634906,
-            "discrepancia_acumulada": -825595.5637932944,
-            "ie_projetado": 0.9116119868090794,
-            "orcamento_projetado": 8514987.327350432
+            "ie_atual": 0.7792664570557905,
+            "discrepancia_acumulada": -815276.2196204932,
+            "ie_projetado": 0.9127167726980401,
+            "orcamento_projetado": 8525306.671523236
           },
           {
             "nome": "DIRETOS - FOLHA",
-            "ie_atual": 1.6094929566544862,
-            "discrepancia_acumulada": 255755.83744231056,
-            "ie_projetado": 1.0614491596594466,
-            "orcamento_projetado": 4417828.009945844
+            "ie_atual": 1.4115345986974048,
+            "discrepancia_acumulada": 277573.59157933336,
+            "ie_projetado": 1.0666912009390672,
+            "orcamento_projetado": 4439645.764082868
           },
           {
             "nome": "ADMINISTRAÇÃO LOCAL DA OBRA",
-            "ie_atual": 1.43820043778798,
-            "discrepancia_acumulada": 98258.68558933336,
-            "ie_projetado": 1.0516641231174366,
-            "orcamento_projetado": 2000133.326256
+            "ie_atual": 1.12647235214318,
+            "discrepancia_acumulada": 42087.85686226668,
+            "ie_projetado": 1.0221296693074964,
+            "orcamento_projetado": 1943962.4975289335
           }
         ]
       },
       "fluxo": {
-        "despesa_mes_atual_rs": 1558764.75,
-        "despesa_acumulada_rs": 11292342.801784385,
-        "previsto_proximo_mes_rs": 2063650.6421023854,
-        "total_projetado_rs": 47275273.841402926,
+        "despesa_mes_atual_rs": 1859344.5699999977,
+        "despesa_acumulada_rs": 12706261.9117148,
+        "previsto_proximo_mes_rs": 2437873.1993254763,
+        "total_projetado_rs": 53385831.1931056,
         "meses": [
           {
             "data": "2026-03-01",
-            "valor_rs": 11292342.801784385,
+            "valor_rs": 12706261.9117148,
             "realizado": true
           },
           {
             "data": "2026-04-01",
-            "valor_rs": 1469358.8027081261,
+            "valor_rs": 346094.233788138,
             "realizado": true
           },
           {
             "data": "2026-05-01",
-            "valor_rs": 1832631.927484884,
+            "valor_rs": 311094.233788138,
             "realizado": true
           },
           {
             "data": "2026-06-01",
-            "valor_rs": 2004338.2433419463,
+            "valor_rs": 1821271.22707882,
             "realizado": true
           },
           {
             "data": "2026-07-01",
-            "valor_rs": 2063650.6421023854,
-            "realizado": false
+            "valor_rs": 2139910.738920414,
+            "realizado": true
           },
           {
             "data": "2026-08-01",
-            "valor_rs": 2336150.8432451896,
+            "valor_rs": 2437873.1993254763,
             "realizado": false
           },
           {
             "data": "2026-09-01",
-            "valor_rs": 2710975.3083798084,
+            "valor_rs": 3343943.9428189676,
             "realizado": false
           },
           {
             "data": "2026-10-01",
-            "valor_rs": 2299138.7740835184,
+            "valor_rs": 2521672.28668922,
             "realizado": false
           },
           {
             "data": "2026-11-01",
-            "valor_rs": 2011825.9566223877,
+            "valor_rs": 1961894.5849020286,
             "realizado": false
           },
           {
             "data": "2026-12-01",
-            "valor_rs": 1358330.9058035954,
+            "valor_rs": 1580160.9068669777,
             "realizado": false
           },
           {
             "data": "2027-01-01",
-            "valor_rs": 1590110.8781095776,
+            "valor_rs": 1695567.3735686992,
             "realizado": false
           },
           {
             "data": "2027-02-01",
-            "valor_rs": 1450818.3452943307,
+            "valor_rs": 1431236.8608307254,
             "realizado": false
           },
           {
             "data": "2027-03-01",
-            "valor_rs": 2116999.245511991,
+            "valor_rs": 2195661.637567555,
             "realizado": false
           },
           {
             "data": "2027-04-01",
-            "valor_rs": 1842443.569262289,
+            "valor_rs": 1903382.2122515356,
             "realizado": false
           },
           {
             "data": "2027-05-01",
-            "valor_rs": 2132090.7206725976,
+            "valor_rs": 2447408.196499857,
             "realizado": false
           },
           {
             "data": "2027-06-01",
-            "valor_rs": 1753077.2052965984,
+            "valor_rs": 1795109.8195111868,
             "realizado": false
           },
           {
             "data": "2027-07-01",
-            "valor_rs": 1902022.5432881939,
+            "valor_rs": 3334845.429801985,
             "realizado": false
           },
           {
             "data": "2027-08-01",
-            "valor_rs": 1272271.0713768909,
+            "valor_rs": 3819731.1167749614,
             "realizado": false
           },
           {
             "data": "2027-09-01",
-            "valor_rs": 1224018.7314873883,
+            "valor_rs": 2619043.3509106203,
             "realizado": false
           },
           {
             "data": "2027-10-01",
-            "valor_rs": 850486.9055656708,
+            "valor_rs": 948097.0714614498,
             "realizado": false
           },
           {
             "data": "2027-11-01",
-            "valor_rs": 720713.4241294409,
+            "valor_rs": 1047958.5671545663,
             "realizado": false
           },
           {
             "data": "2027-12-01",
-            "valor_rs": 602378.2211011325,
+            "valor_rs": 428272.26831223676,
             "realizado": false
           },
           {
             "data": "2028-01-01",
-            "valor_rs": 505569.15348947275,
+            "valor_rs": 278588.8636432799,
             "realizado": false
           },
           {
             "data": "2028-02-01",
-            "valor_rs": -33235.189369439475,
+            "valor_rs": 27161.922045400766,
             "realizado": false
           },
           {
             "data": "2028-03-01",
-            "valor_rs": -33235.189369439475,
+            "valor_rs": 243589.23687856202,
             "realizado": false
           }
         ]
@@ -322,8 +322,8 @@
       {
         "slug": "vila-gonzaga",
         "nome": "Vila Gonzaga",
-        "ie_atual": 0.9985352218732387,
-        "ie_projetado": 0.9997195084639032,
+        "ie_atual": 1.0079953333990914,
+        "ie_projetado": 1.001790702067822,
         "status_dias": -15,
         "avanco_global_pct": 0.146,
         "prazo_projetado": "Jan/2028 (previsto)",
