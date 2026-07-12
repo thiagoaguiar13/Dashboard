@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Obras — Trisa</title>
+  <title>Painel Gerencial de Obras — Trisa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 </head>
 <body>
-  <header class="app-header">
-    <div class="header-inner">
-      <span class="logo">TRISA <span class="logo-sub">Incorporadora</span></span>
+  <nav class="sidebar">
+    <div class="sidebar-obra" id="obra-selector"></div>
+    <div class="secoes-nav" id="secoes-nav" role="tablist" aria-label="Seções"></div>
+  </nav>
+  <div class="main-col">
+    <header class="topbar">
+      <h1>Painel Gerencial de Obras</h1>
       <span id="gerado-em" class="gerado-em"></span>
-    </div>
-  </header>
-
-  <nav id="obras-nav" class="tabs-l1" role="tablist" aria-label="Obras"></nav>
-
-  <div class="layout">
-    <aside id="secoes-sidebar" class="sidebar">
-      <nav id="secoes-nav" class="secoes-nav" role="tablist" aria-label="Seções"></nav>
-    </aside>
+    </header>
     <main id="conteudo" class="conteudo"></main>
   </div>
-
   <script src="app.js"></script>
 </body>
 </html>

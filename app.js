@@ -43,71 +43,80 @@ function el(tag, cls, html = '') {
 
 let DADOS = null;
 let obraAtual = null;
-let secaoAtual = 'custo';
-const SECOES = ['custo', 'prazo', 'pls', 'fluxo'];
-const SECOES_LABELS = { custo: 'Custo', prazo: 'Prazo', pls: 'PLS', fluxo: 'Fluxo' };
+let secaoAtual = 'dashboard';
+const SECOES_DEF = [
+  { id: 'dashboard', label: 'Dashboard', icon: 'dashboard' },
+  { id: 'prazo', label: 'Prazo', icon: 'event_note' },
+  { id: 'custo', label: 'Custo', icon: 'payments' },
+  { id: 'pls', label: 'PLS', icon: 'receipt_long' },
+  { id: 'fluxo', label: 'Fluxo', icon: 'account_balance_wallet' },
+];
+const SECAO_COMPARATIVO = { id: 'comparativo', label: 'Comparativo', icon: 'compare_arrows' };
 const chartInstances = {};
 
 // ── Navegação ────────────────────────────────────────────────────────────────
 
-function renderObrasTabs() {
-  const nav = document.getElementById('obras-nav');
-  nav.innerHTML = '';
-  const obras = Object.entries(DADOS.obras);
-  obras.forEach(([slug, obra]) => {
-    const btn = el('button', slug === obraAtual ? 'ativo' : '');
-    btn.textContent = obra.nome;
-    btn.setAttribute('role', 'tab');
-    btn.addEventListener('click', () => selecionarObra(slug));
-    nav.appendChild(btn);
-  });
-  if (obras.length > 1) {
-    const btn = el('button', obraAtual === 'comparativo' ? 'ativo' : '');
-    btn.textContent = 'Comparativo';
-    btn.setAttribute('role', 'tab');
-    btn.addEventListener('click', () => selecionarObra('comparativo'));
-    nav.appendChild(btn);
+function renderObraSelector() {
+  const box = document.getElementById('obra-selector');
+  box.innerHTML = '';
+  const slugs = Object.keys(DADOS.obras);
+  if (slugs.length === 1) {
+    const obra = DADOS.obras[slugs[0]];
+    box.innerHTML = `<div class="obra-nome">${obra.nome}</div>
+      <div class="obra-cod">${obra.localizacao || ''}</div>`;
+  } else {
+    const sel = document.createElement('select');
+    sel.setAttribute('aria-label', 'Selecionar obra');
+    slugs.forEach(slug => {
+      const opt = document.createElement('option');
+      opt.value = slug;
+      opt.textContent = DADOS.obras[slug].nome;
+      sel.appendChild(opt);
+    });
+    sel.value = obraAtual;
+    sel.addEventListener('change', e => selecionarObra(e.target.value));
+    box.appendChild(sel);
   }
 }
 
-function renderSecoesTabs() {
+function secoesDisponiveis() {
+  const secoes = [...SECOES_DEF];
+  if (Object.keys(DADOS.obras).length > 1) secoes.push(SECAO_COMPARATIVO);
+  return secoes;
+}
+
+function renderSecoesNav() {
   const nav = document.getElementById('secoes-nav');
   nav.innerHTML = '';
-  SECOES.forEach(s => {
-    const btn = el('button', s === secaoAtual ? 'ativo' : '');
-    btn.textContent = SECOES_LABELS[s];
+  secoesDisponiveis().forEach(({ id, label, icon }) => {
+    const btn = el('button', id === secaoAtual ? 'ativo' : '');
+    btn.innerHTML = `<span class="material-symbols-outlined">${icon}</span><span>${label}</span>`;
     btn.setAttribute('role', 'tab');
-    btn.addEventListener('click', () => selecionarSecao(s));
+    btn.addEventListener('click', () => selecionarSecao(id));
     nav.appendChild(btn);
   });
 }
 
 function selecionarObra(slug) {
   obraAtual = slug;
-  renderObrasTabs();
-  const isComp = slug === 'comparativo';
-  document.getElementById('secoes-sidebar').style.display = isComp ? 'none' : '';
-  if (isComp) {
-    renderComparativo();
-  } else {
-    renderSecoesTabs();
-    renderSecao();
-  }
+  renderSecao();
 }
 
 function selecionarSecao(s) {
   secaoAtual = s;
-  renderSecoesTabs();
+  renderSecoesNav();
   renderSecao();
 }
 
 function renderSecao() {
-  const obra = DADOS.obras[obraAtual];
-  if (!obra) return;
   destroyCharts();
   const main = document.getElementById('conteudo');
   main.innerHTML = '';
-  if (secaoAtual === 'custo') renderCusto(obra, main);
+  if (secaoAtual === 'comparativo') { renderComparativo(); return; }
+  const obra = DADOS.obras[obraAtual];
+  if (!obra) return;
+  if (secaoAtual === 'dashboard') renderDashboard(obra, main);
+  else if (secaoAtual === 'custo') renderCusto(obra, main);
   else if (secaoAtual === 'prazo') renderPrazo(obra, main);
   else if (secaoAtual === 'pls') renderPLS(obra, main);
   else if (secaoAtual === 'fluxo') renderFluxo(obra, main);
@@ -134,6 +143,213 @@ function kpiRow(cards) {
 
 function sectionHeader(text) {
   return el('div', 'section-header', text);
+}
+
+// ── Seção: Dashboard (visão geral) ───────────────────────────────────────────
+
+function dashCard(title, icon, bodyHtml) {
+  const card = el('div', 'card dash-card');
+  card.innerHTML = `<div class="dash-card-head">
+      <span class="dash-card-title">${title}</span>
+      <span class="material-symbols-outlined">${icon}</span>
+    </div>${bodyHtml}`;
+  return card;
+}
+
+function deltaMesAnterior(meses) {
+  const realizados = (meses || []).filter(m => m.realizado);
+  if (realizados.length < 2) return null;
+  const atual = realizados[realizados.length - 1].valor_rs;
+  const anterior = realizados[realizados.length - 2].valor_rs;
+  if (!anterior) return null;
+  return (atual - anterior) / anterior;
+}
+
+function serviceListCard(titulo, itens, msgVazio) {
+  const card = el('div', 'card');
+  card.innerHTML = `<h3 class="dash-section-title">${titulo}</h3>`;
+  if (!itens?.length) {
+    card.appendChild(el('div', 'empty-state', msgVazio));
+    return card;
+  }
+  const ul = el('ul', 'service-list');
+  itens.forEach(item => {
+    const pct = Math.min((item.avanco_servico_pct || 0) * 100, 100);
+    const li = el('li', 'service-item');
+    li.innerHTML = `
+      <div class="service-head">
+        <span class="service-nome">${item.nome}</span>
+        <span class="service-pct">${fmtPct(item.avanco_servico_pct)}</span>
+      </div>
+      <div class="dual-bar-track"><div class="dual-bar-fill exec" style="width:${pct.toFixed(1)}%"></div></div>`;
+    ul.appendChild(li);
+  });
+  card.appendChild(ul);
+  return card;
+}
+
+function renderDashboard(obra, container) {
+  const p = obra.prazo, c = obra.custo, f = obra.fluxo, pls = obra.pls;
+
+  // ── Linha de 4 cards ──
+  const summary = el('div', 'dash-summary');
+
+  // Card 1: Prazo
+  if (p?.avanco) {
+    const exec = p.avanco.global_exec_acum, plan = p.avanco.global_plan_acum;
+    const idp = plan > 0 ? exec / plan : null;
+    const idpCls = idp == null ? 'blue' : idp >= 0.95 ? 'green' : idp >= 0.85 ? 'amber' : 'red';
+    summary.appendChild(dashCard('Prazo', 'timeline', `
+      <div class="dash-value">${fmtPct(exec)} <span class="dash-value-sub">/ ${fmtPct(plan)} plan.</span></div>
+      <span class="dash-badge ${idpCls}">IDP: ${idp != null ? idp.toFixed(2) : '—'}</span>
+      <div class="dual-bar">
+        <div class="dual-bar-track"><div class="dual-bar-fill exec" style="width:${Math.min(exec * 100, 100).toFixed(1)}%"></div></div>
+        <div class="dual-bar-track thin"><div class="dual-bar-fill plan" style="width:${Math.min(plan * 100, 100).toFixed(1)}%"></div></div>
+      </div>`));
+  } else {
+    summary.appendChild(dashCard('Prazo', 'timeline', `<div class="empty-state">Sem dados de prazo</div>`));
+  }
+
+  // Card 2: Custo Incorrido
+  if (f) {
+    const delta = deltaMesAnterior(f.meses);
+    const deltaHtml = delta == null ? '' :
+      `<span class="dash-badge ${delta > 0 ? 'red' : 'green'}">
+        <span class="material-symbols-outlined" style="font-size:15px">${delta > 0 ? 'trending_up' : 'trending_down'}</span>
+        ${(delta * 100).toFixed(1)}% vs mês ant.</span>`;
+    summary.appendChild(dashCard('Custo Incorrido', 'account_balance_wallet', `
+      <div class="dash-line">No mês: <strong>${fmtRS(f.despesa_mes_atual_rs)}</strong></div>
+      <div class="dash-line">Acumulado: <strong>${fmtRS(f.despesa_acumulada_rs)}</strong></div>
+      ${deltaHtml}`));
+  } else {
+    summary.appendChild(dashCard('Custo Incorrido', 'account_balance_wallet', `<div class="empty-state">Sem dados de fluxo</div>`));
+  }
+
+  // Card 3: Resultado (economia vs orçamento — IE)
+  if (c) {
+    const disc = c.discrepancia_acumulada_total;
+    const discCls = disc <= 0 ? 'green' : 'red';
+    const ieCls = ie_color(c.ie_atual_total) || 'blue';
+    summary.appendChild(dashCard('Resultado', 'analytics', `
+      <div class="dash-value" style="color:var(--${discCls})">${fmtRS(disc)}</div>
+      <div class="dash-line">${disc <= 0 ? 'Economia acumulada' : 'Estouro acumulado'} vs orçamento</div>
+      <span class="dash-badge ${ieCls}">IE ${c.ie_atual_total?.toFixed(3) ?? '—'} · proj. ${c.ie_projetado_total?.toFixed(3) ?? '—'}</span>`));
+  } else {
+    summary.appendChild(dashCard('Resultado', 'analytics', `<div class="empty-state">Sem dados de custo</div>`));
+  }
+
+  // Card 4: PLS
+  const mods = [pls?.modulo1 && { n: 1, m: pls.modulo1 }, pls?.modulo2 && { n: 2, m: pls.modulo2 }].filter(Boolean);
+  if (mods.length) {
+    const linhas = mods.map(({ n, m }) => `
+      <div class="dash-line">Mód ${n} — mês: <strong>${fmtRS(m.medicao_mes_rs)}</strong> (${fmtPct(m.avanco_fisico_mes_pct)})</div>
+      <div class="dash-line">Mód ${n} — acum: <strong>${fmtRS(m.acumulado_recebido_rs)}</strong> (${fmtPct(m.avanco_fisico_acumulado_pct)})</div>`).join('');
+    const totalMedido = mods.reduce((s, { m }) => s + (m.acumulado_recebido_rs || 0), 0);
+    summary.appendChild(dashCard('PLS', 'receipt_long', `${linhas}
+      <span class="dash-badge blue">Total medido: ${fmtRS(totalMedido)}</span>`));
+  } else {
+    summary.appendChild(dashCard('PLS', 'receipt_long', `<div class="empty-state">Sem medições PLS</div>`));
+  }
+
+  container.appendChild(summary);
+
+  // ── Grade 8/4 ──
+  const grid = el('div', 'dash-grid');
+  const left = el('div', 'dash-col-left');
+  const right = el('div', 'dash-col-right');
+
+  // Gerenciador de Prazo (curva S)
+  const cardPrazo = el('div', 'card');
+  cardPrazo.innerHTML = `<h3 class="dash-section-title">Gerenciador de Prazo</h3>`;
+  const curva = p?.curva_mensal || [];
+  if (curva.length) {
+    const body = el('div', 'dash-chart-body');
+    const canvas = document.createElement('canvas');
+    canvas.height = 260;
+    body.appendChild(canvas);
+    cardPrazo.appendChild(body);
+    chartInstances['dash-prazo'] = new Chart(canvas, {
+      data: {
+        labels: curva.map(r => r.mes),
+        datasets: [
+          { type: 'line', label: 'Executado', data: curva.map(r => r.exec_acum_pct * 100),
+            borderColor: '#1e3a8a', backgroundColor: '#1e3a8a', tension: 0.3, pointRadius: 3 },
+          { type: 'line', label: 'Planejado', data: curva.map(r => r.plan_acum_pct * 100),
+            borderColor: '#757682', borderDash: [6, 4], backgroundColor: '#757682',
+            tension: 0.3, pointRadius: 3 },
+          { type: 'bar', label: 'Avanço no mês', data: curva.map(r => r.avanco_mes_pct * 100),
+            backgroundColor: 'rgba(30,58,138,0.25)', borderRadius: 3 },
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' } } },
+        plugins: { tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${Number(ctx.raw).toFixed(1)}%` } } }
+      }
+    });
+  } else {
+    cardPrazo.appendChild(el('div', 'empty-state', 'Histórico do GP indisponível.'));
+  }
+  left.appendChild(cardPrazo);
+
+  // Gerenciador Econômico
+  const cardEcon = el('div', 'card');
+  cardEcon.innerHTML = `<h3 class="dash-section-title">Gerenciador Econômico</h3>`;
+  const realizados = (f?.meses || []).filter(m => m.realizado);
+  if (realizados.length) {
+    const body = el('div', 'dash-chart-body');
+    const canvas = document.createElement('canvas');
+    canvas.height = 260;
+    body.appendChild(canvas);
+    cardEcon.appendChild(body);
+
+    let acum = 0;
+    const realizadoAcum = realizados.map(m => (acum += m.valor_rs));
+
+    const medicoes = (pls?.historico_medicoes || []).slice()
+      .sort((a, b) => (a.periodo_fim || '').localeCompare(b.periodo_fim || ''));
+    const medidoAcumAte = yyyymm => {
+      const porMod = {};
+      medicoes.forEach(h => {
+        if (h.periodo_fim && h.periodo_fim.slice(0, 7) <= yyyymm) porMod[h.modulo] = h.rs_acum;
+      });
+      const vals = Object.values(porMod);
+      return vals.length ? vals.reduce((a, b) => a + b, 0) : null;
+    };
+
+    chartInstances['dash-econ'] = new Chart(canvas, {
+      data: {
+        labels: realizados.map(m => fmtData(m.data)),
+        datasets: [
+          { type: 'line', label: 'Realizado Acum.', data: realizadoAcum,
+            borderColor: '#1e3a8a', backgroundColor: '#1e3a8a', tension: 0.2, pointRadius: 3 },
+          { type: 'line', label: 'Medido Acum.', data: realizados.map(m => medidoAcumAte(m.data.slice(0, 7))),
+            borderColor: '#16a34a', borderDash: [6, 4], backgroundColor: '#16a34a',
+            tension: 0.2, pointRadius: 3, spanGaps: true },
+          { type: 'bar', label: 'Gasto Mensal', data: realizados.map(m => m.valor_rs),
+            backgroundColor: 'rgba(30,58,138,0.25)', borderRadius: 3 },
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { ticks: { callback: v => fmtRS(v) } }, x: { ticks: { maxRotation: 45 } } },
+        plugins: { tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${fmtRS(ctx.raw)}` } } }
+      }
+    });
+  } else {
+    cardEcon.appendChild(el('div', 'empty-state', 'Sem fluxo realizado para exibir.'));
+  }
+  left.appendChild(cardEcon);
+
+  // Listas de serviços
+  right.appendChild(serviceListCard('Principais Serviços do Mês',
+    p?.top5_mes_vigente, 'Sem dados no GP deste mês.'));
+  right.appendChild(serviceListCard('Principais Serviços do Próximo Mês',
+    p?.top5_proximo_mes, 'Sem dados no GP deste mês.'));
+
+  grid.appendChild(left);
+  grid.appendChild(right);
+  container.appendChild(grid);
 }
 
 // ── Seção: Custo ─────────────────────────────────────────────────────────────
@@ -175,7 +391,7 @@ function renderCusto(obra, container) {
 
   const labels = c.categorias.map(cat => cat.nome);
   const ies = c.categorias.map(cat => cat.ie_atual);
-  const colors = ies.map(ie => ie < 1 ? '#1a9e4b' : ie <= 1.05 ? '#e8a317' : '#e03e3e');
+  const colors = ies.map(ie => ie < 1 ? '#16a34a' : ie <= 1.05 ? '#eab308' : '#ba1a1a');
 
   chartInstances['custo-cat'] = new Chart(canvas, {
     type: 'bar',
@@ -336,16 +552,16 @@ function renderPLS(obra, container) {
         labels,
         datasets: [
           { label: 'Mód 1 Previsto', data: curva.map(r => r.prev_mod1),
-            backgroundColor: 'rgba(28,143,209,0.7)', stack: 'prev', borderRadius: 3 },
+            backgroundColor: 'rgba(30,58,138,0.7)', stack: 'prev', borderRadius: 3 },
           { label: 'Mód 2 Previsto', data: curva.map(r => r.prev_mod2),
-            backgroundColor: 'rgba(26,158,75,0.7)', stack: 'prev', borderRadius: 3 },
+            backgroundColor: 'rgba(22,163,74,0.7)', stack: 'prev', borderRadius: 3 },
           { label: 'Mód 1 Realizado',
             data: curva.map(r => realMap1[r.data.slice(0, 7)] ?? null),
-            type: 'line', borderColor: '#1c8fd1', backgroundColor: '#1c8fd1',
+            type: 'line', borderColor: '#1e3a8a', backgroundColor: '#1e3a8a',
             pointStyle: 'circle', pointRadius: 6, spanGaps: false, borderDash: [5, 4] },
           { label: 'Mód 2 Realizado',
             data: curva.map(r => realMap2[r.data.slice(0, 7)] ?? null),
-            type: 'line', borderColor: '#1a9e4b', backgroundColor: '#1a9e4b',
+            type: 'line', borderColor: '#16a34a', backgroundColor: '#16a34a',
             pointStyle: 'rectRot', pointRadius: 6, spanGaps: false, borderDash: [5, 4] },
         ]
       },
@@ -423,13 +639,13 @@ function renderFluxo(obra, container) {
         {
           label: 'Realizado',
           data: todosMeses.map(m => m.realizado ? m.valor_rs : null),
-          backgroundColor: 'rgba(26,158,75,0.75)',
+          backgroundColor: 'rgba(22,163,74,0.75)',
           borderRadius: 4,
         },
         {
           label: 'Previsto',
           data: todosMeses.map(m => !m.realizado ? m.valor_rs : null),
-          backgroundColor: 'rgba(28,143,209,0.55)',
+          backgroundColor: 'rgba(30,58,138,0.45)',
           borderRadius: 4,
         },
       ]
@@ -450,9 +666,7 @@ function renderFluxo(obra, container) {
 // ── Comparativo ──────────────────────────────────────────────────────────────
 
 function renderComparativo() {
-  destroyCharts();
   const main = document.getElementById('conteudo');
-  main.innerHTML = '';
   const comp = DADOS.comparativo?.obras || [];
   if (!comp.length) {
     main.appendChild(el('div', 'error', 'Nenhuma obra no comparativo.'));
@@ -514,7 +728,7 @@ Chart.register({
     ctx.beginPath();
     ctx.moveTo(chart.chartArea.left, yPos);
     ctx.lineTo(chart.chartArea.right, yPos);
-    ctx.strokeStyle = '#e03e3e';
+    ctx.strokeStyle = '#ba1a1a';
     ctx.lineWidth = 1.5;
     ctx.setLineDash([5, 4]);
     ctx.stroke();
@@ -544,8 +758,8 @@ async function init() {
     return;
   }
   obraAtual = slugs[0];
-  renderObrasTabs();
-  renderSecoesTabs();
+  renderObraSelector();
+  renderSecoesNav();
   renderSecao();
 }
 

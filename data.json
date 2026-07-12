@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-10T19:08:03.736898",
+  "gerado_em": "2026-07-12T14:22:30.320442",
   "obras": {
     "vila-gonzaga": {
       "nome": "Vila Gonzaga",
@@ -252,7 +252,21 @@
         ],
         "top5_proximo_mes": [],
         "planejado_proximo_mes_pct": 0.038900000000000004,
-        "projetado_proximo_mes_pct": 0.0
+        "projetado_proximo_mes_pct": 0.0,
+        "curva_mensal": [
+          {
+            "mes": "Mar/2026",
+            "plan_acum_pct": 0.10658925219378348,
+            "exec_acum_pct": 0.10852114699887465,
+            "avanco_mes_pct": 0.0
+          },
+          {
+            "mes": "Abr/2026",
+            "plan_acum_pct": 0.1586,
+            "exec_acum_pct": 0.146,
+            "avanco_mes_pct": 0.03747885300112534
+          }
+        ]
       },
       "pls": {
         "modulo1": {
