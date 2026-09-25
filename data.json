@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-12T14:22:30.320442",
+  "gerado_em": "2026-09-25T16:50:39.467177",
   "obras": {
     "vila-gonzaga": {
       "nome": "Vila Gonzaga",
@@ -270,23 +270,23 @@
       },
       "pls": {
         "modulo1": {
-          "numero_medicao": 9,
-          "periodo_referencia": "05/05/2026 à 05/06/2026",
-          "avanco_fisico_mes_pct": 0.05479465921875004,
-          "avanco_fisico_acumulado_pct": 0.24320037671875003,
-          "avanco_fisico_anterior_pct": 0.1884057175,
-          "medicao_mes_rs": 1759040.068104001,
-          "acumulado_recebido_rs": 7807315.773575999,
-          "contrato_total_rs": 32102399.999999996
+          "numero_medicao": 11,
+          "periodo_referencia": "05/08/2026 à 05/09/2026",
+          "avanco_fisico_mes_pct": 0.0164,
+          "avanco_fisico_acumulado_pct": 0.3794,
+          "avanco_fisico_anterior_pct": 0.363,
+          "medicao_mes_rs": 527975.98,
+          "acumulado_recebido_rs": 12178982.02,
+          "contrato_total_rs": 32102400.0
         },
         "modulo2": {
-          "numero_medicao": 5,
-          "periodo_referencia": "05/05/2026 a 05/06/2026",
-          "avanco_fisico_mes_pct": 0.006256799999999991,
-          "avanco_fisico_acumulado_pct": 0.1357378,
-          "avanco_fisico_anterior_pct": 0.129481,
-          "medicao_mes_rs": 164338.60683081578,
-          "acumulado_recebido_rs": 3565234.7759685363,
+          "numero_medicao": 8,
+          "periodo_referencia": "05/08/2026 a 05/09/2026",
+          "avanco_fisico_mes_pct": 0.0342,
+          "avanco_fisico_acumulado_pct": 0.2189,
+          "avanco_fisico_anterior_pct": 0.1848,
+          "medicao_mes_rs": 897378.67,
+          "acumulado_recebido_rs": 5750146.51,
           "contrato_total_rs": 26265600.12
         },
         "previsao_curva": [],
@@ -326,6 +326,24 @@
             "rs_periodo": 164338.60683081578,
             "pct_acum": 0.1357378,
             "rs_acum": 3565234.7759685363
+          },
+          {
+            "modulo": 1,
+            "numero_medicao": 11,
+            "periodo_fim": "2026-09-05",
+            "pct_periodo": 0.0164,
+            "rs_periodo": 527975.98,
+            "pct_acum": 0.3794,
+            "rs_acum": 12178982.02
+          },
+          {
+            "modulo": 2,
+            "numero_medicao": 8,
+            "periodo_fim": "2026-09-05",
+            "pct_periodo": 0.0342,
+            "rs_periodo": 897378.67,
+            "pct_acum": 0.2189,
+            "rs_acum": 5750146.51
           }
         ]
       }
